@@ -1,0 +1,77 @@
+.img-height{
+    width:30vw !important;
+    height:30vh !important;
+}
+.img-height1{
+    width:50vw !important;
+    height:50vw !important;
+}
+.logo1{
+    background-image:url('static/images/logo.jpg');
+}
+
+.scroll-container{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 10px 0;
+    gap: 12x;
+    scroll-behavior: smooth;
+
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+
+.card-scroll-item{
+    flex: 0 0 auto;
+    width:150;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+}
+.img-height{
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+
+@media screen and (max-width:600px){
+    .image-hide{
+        display:none;
+        margin-top:0;
+        padding:0;
+    }
+   
+}
+    
+
+
+
+
+.scroll{display: flex; overflow:auto !important;}
+        ::-webkit-scrollbar{ overflow-x: scroll; }
+        .scroll_1 {
+            padding: 5px;
+            height: 600px;
+            overflow-x: hidden;
+            overflow-y: auto !important;
+        }
+        .scroll_11{
+        position:absolute;
+        padding: 5px;
+        height: 600px;
+        overflow-x: hidden;
+        overflow-y: auto !important;
+        z-index:0;
+     }
+
+
+
+     

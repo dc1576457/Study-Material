@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">  
+    <!-- Category Carousel -->
+    <div id="carouselExampleDark" class="carousel carousel-dark slide w-100 h-100" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+        {% for cat in cats %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img src="/media/{{ cat.image }}" class="d-block w-100" style="height:370px;" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1><a class="text-decoration-none fs-1" href="/category/{{cat.url}}">{{ cat.title }}</a></h1>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Posts Section -->
+    <div class="mt-5">
+        <h2 class="mb-4">Our Content</h2>
+
+        {% for p in posts %}
+        <!-- Wrapper with gray border on mobile, no border on large screens -->
+        <div class="border border-secondary p-3 mb-4 d-lg-flex border-lg-0">
+            
+            <!-- Image -->
+            <div class="col-lg-4 mb-3 mb-lg-0 text-center">
+              <img src="/media/{{ p.image }}" class="img-fluid w-75" style="max-height: 200px; object-fit: cover;" />
+            </div>
+
+            <!-- Content -->
+            <div class="col-lg-8 ps-lg-4">
+                <h2><a class="text-decoration-none" href="/blog/{{ p.url }}">{{ p.title }}</a></h2>
+                <p class="fs-5">{{ p.content|safe|slice:":300" }}</p>
+                <a class="btn btn-success px-3" href="/blog/{{ p.url }}">Read More</a>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

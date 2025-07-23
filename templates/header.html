@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg bg-dark sticky-top border-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light logo1" href="/">STUDY MATERIAL </a>
+    <button class="navbar-toggler text-light bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon text-light"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="{%url 'home'%}">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="{% url 'contact'%}">CONTACT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="{%url 'about'%}">ABOUT</a>
+        </li>
+
+         <li class="nav-item">
+          <a class="nav-link text-light" href="{%url 'notes'%}">NOTES</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle bg-dark text-light px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            CATEGORY
+          </a>
+          <ul class="dropdown-menu  bg-dark">
+            {%for cat in cats%}
+            <li class="mb-2"><a class="text-decoration-none  text-light px-2 " style="font-size:15px;" href="/category/{{cat.url}}">{{cat.title}}</a></li>
+            {%endfor%}
+          </ul>
+        </li>
+      </ul>
+      
+    </div>
+   <form class="d-flex" role="search" method="get" action="{% url 'Search' %}">
+  <input class="form-control me-2" type="search" name="q" placeholder="Search notes or posts" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+
+<hr>
+  </div>
+</nav>

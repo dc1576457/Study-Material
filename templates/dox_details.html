@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{%load static%}
+
+{% block content %}
+<div class="container ">
+    
+    <h1 class="text-light  mt-5 mb-5">📘 Notes & Books Download</h1>
+    <div class="row">
+        {% for post in post %}
+        <div class="col-sm-2 border border-secondary p-2 ms-3">
+            <img class="ms-3 img-fluid" src="{{ post.note_post_image.url }}" style="width:150px; height:100px;" /><br />
+            <p class="pt-2 ms-3">{{ post.note_post_title }}</p>
+            <a href="{{ post.note_file.url }}" class="btn btn-info ms-3" target="_blank">View</a>
+            <a href="{{ post.note_file.url }}" class="btn btn-primary" download>Download</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{%endblock%}

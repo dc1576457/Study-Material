@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h3 class="text-success">Search Results for "{{ query }}"</h3>
+
+    {% if post_results %}
+    <h4 class="mt-4">Post Results</h4>
+    <div class="row">
+        {% for post in post_results %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="{{ post.image.url }}" class="card-img-top" style="height:200px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <a href="{% url 'trans' post.url %}" class="btn btn-sm btn-primary">Read Post</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No blog posts found.</p>
+    {% endif %}
+
+    {% if note_results %}
+    <h4 class="mt-5">Note Results</h4>
+    <div class="row">
+        {% for note in note_results %}
+        <div class="col-sm-2 border border-secondary p-2 ms-3">
+            <img class="ms-3 img-fluid" src="{{ note.note_post_image.url }}" style="width:150px; height:100px;" /><br />
+            <p class="pt-2 ms-3">{{ note.note_post_title }}</p>
+            <a href="{{ post.note_file.url }}" class="btn btn-info ms-3" target="_blank">View</a>
+            <a href="{{ post.note_file.url }}" class="btn btn-primary" download>Download</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No notes found.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

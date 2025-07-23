@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<title>Download Notes || Books</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    padding: 20px;
+  }
+  .container1 {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  .card {
+    background: #fff;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+  }
+  .card h3 {
+    margin: 0 0 10px;
+    color: #0077cc;
+  }
+  .download-btn {
+    text-decoration: none;
+    background: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background 0.3s;
+  }
+  .download-btn:hover {
+    background: #218838;
+  }
+</style>
+
+<div class="container">
+ <h3 class="text-light mt-5 mb-3">📘 Notes & Books Category</h3>
+  <div class="row mt-5">
+    
+      {% if post %}
+    {% for p in post %}
+    <div class="col-sm-2">
+      <img src="/media/{{ p.note_post_image }}" style="width:100px;height:100px;" /><br/>
+            <p>{{ p.note_post_title }}</p>
+           <a href="{% url 'dox_details' url=p.uploader.url %}" class="download-btn ">View</a><br/><br/>
+
+    </div>
+     {% endfor %}
+     {% else %}
+    <div class="alert alert-warning mt-4 text-center">
+      <strong>😕 No notes found.</strong><br>
+      Try changing the search or uploader filter.
+    </div>
+  {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container ">
+    <div class="row my-3">
+        <div class="col-sm-9">
+            <h2>{{post.title}}</h2>
+            <p class="text-secondary">Category Tag : {{post.cat.title}}</p>
+            <p class="text-secondary">Post By : {{ post.auther_name}} | {{post.cat.add_date|timesince  }} Ago</p>
+            <img src="/media/{{post.image}}" style="width:900px; height:400px;"
+                       <p> {{post.content|safe}}</p>
+        </div>
+        <div class="col-sm-3   ">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2> &nbsp;&nbsp; Category Posts  </h2>
+                    <ol>
+                        {%for x in cats %}
+                        <li><a class="text-decoration-none" href="/category/{{x.url}}">{{x.title}}</a></li>
+                        {%endfor%}
+                    </ol>
+                    <br><br>
+                    <h2> &nbsp;&nbsp;Related  Post </h2>
+                     <ol>
+                          {%for p in post1%}
+                        <li><a class="text-decoration-none" href="/blog/{{p.url}}">{{p.title}}</a></li>
+                        {%endfor%}
+                    </ol>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
+</div>
+{%endblock%}
